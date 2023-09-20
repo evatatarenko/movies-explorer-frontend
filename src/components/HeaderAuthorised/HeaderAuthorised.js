@@ -1,25 +1,29 @@
 import logoHeader from '../../images/logo_header.png'; 
 import { Link } from 'react-router-dom'; 
 import iconMenu from '../../images/icon__COLOR_icon-main.svg';
+import profileButton from '../../images/profile.svg'
+
+
+
 
 
 
 function HeaderAuthorised() {
 
     return (
-      <header className="headerAuthorised headerAuthorised_white">
+      <section className="headerAuthorised headerAuthorised_white">
         <div className="headerAuthorised__container">
-          <img src={logoHeader} alt="Логотип" className="headerAuthorised__logo"/>
+        <Link to={'/'}><img src={logoHeader} alt="Логотип" className="headerAuthorised__logo"/></Link>
           <div className="headerAuthorised__container-middle">
-          <Link to={'/'} className={'headerAuthorised__link '}>{'Фильмы'}</Link>
-          <Link to={'/'} className={'headerAuthorised__link '}>{'Сохранённые фильмы'}</Link>
-            <button className="headerAuthorised__button"></button>
+          <Link to={'/movies'} className={'headerAuthorised__link '}>{'Фильмы'}</Link>
+          <Link to={'/saved-movies'} className={'headerAuthorised__link '}>{'Сохранённые фильмы'}</Link>
+          <Link to={'/profile'}><img src={profileButton} alt="Аккаунт" className="headerAuthorised__button"/></Link>
           </div>
         <button className="headerAuthorised__nav-mobile">
             <img src={iconMenu} alt="Иконка меню" className="headerAuthorised__icon-menu"/>
           </button>
           </div>
-      </header>
+      </section>
     );
   }
   

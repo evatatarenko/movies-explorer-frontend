@@ -15,6 +15,9 @@ import Profile from './components/Profile/Profile';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import More from './components/More/More';
+import PageNotFound from './components/PageNotFound/PageNotFound';
+import Sidebar from './components/Sidebar/Sidebar';
+
 
 
 import Img1 from './images/moviesPhoto.svg';
@@ -127,6 +130,7 @@ function App() {
      <Route  path="/movies" element={
        <div>
       <HeaderAuthorised/> 
+      <Sidebar />
       <SearchForm />
       <MoviesCardList data={savedData} />
       <More/>
@@ -147,6 +151,7 @@ function App() {
   
      <Route  path="/signin" element={<Login/>} />
       <Route path="/signup" element={<Register/>}/>
+      <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
 
