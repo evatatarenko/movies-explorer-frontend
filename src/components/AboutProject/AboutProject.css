@@ -22,6 +22,7 @@
     width: 89%;
     margin-block-start: 0;
     margin-block-end: 0;
+    align-self: flex-start;
 }
 
 .section__header_tech {
@@ -55,7 +56,6 @@
 
 .aboutProject__table__items {
     margin: 0;
-    overflow: hidden;
     position: relative;
     width: 550px;
 }
@@ -67,7 +67,7 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 24px;
-    letter-spacing: -0.04em;
+    letter-spacing:-0.8px;
     color: black;
 }
 
@@ -149,6 +149,9 @@
         margin-top: 15px;
         margin-bottom: 55px;
     }
+
+    
+    
 }
 
 @media screen and (max-width: 500px) {

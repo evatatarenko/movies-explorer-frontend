@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 function Profile() {
 
     return (
-      <div className="profile" >
+      <main>
+      <section className="profile" >
         <h1 className="welcome-title">Привет, Виталий!</h1>
         <form className="profile__form">
           <div className="profile__form-input profile__form-input_border">
@@ -22,7 +23,8 @@ function Profile() {
             <button type="submit" className="common-link" >Редактировать</button>
             <Link to={'/'} className={'common-link common-link_red'}>{'Выйти из аккаунта'}</Link>
           </div>
-      </div>
+      </section>
+      </main>
     );
   }
     

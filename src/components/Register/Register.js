@@ -4,7 +4,8 @@ import logoHeader from '../../images/logo_header.png';
 function Register() {
 
   return (
-    <div className='login'>
+    <main>
+    <section className='login'>
     <div className='login__header'>
       <Link to={'/'}><img src={logoHeader} alt="Логотип пользователя" className="login__logo"/></Link>
       <h1 className="welcome-title welcome-title_login">Добро пожаловать!</h1>
@@ -31,7 +32,8 @@ function Register() {
         <p className="common-link common-link_grey">Уже зарегистрированы?</p>
         <Link to={'/signin'} className={'common-link common-link_orange'}>{'Войти'}</Link>
       </div>
-    </div>
+      </section>
+      </main>
   );
 }
   

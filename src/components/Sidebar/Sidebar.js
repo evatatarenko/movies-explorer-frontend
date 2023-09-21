@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 
 function Sidebar (){
     return(
+        <main>
 <section className='sidebar'>
 <div className='sidenav'>
-<button className='sidebar__button-close'></button>
+<button type='button' className='sidebar__button-close'></button>
 <div class="sidenav__links">
 <Link to={'/'} className={'sidebar__link'}>{'Главная'}</Link>
 <Link to={'/movies'} className={'sidebar__link'}>{'Фильмы'}</Link>
@@ -14,6 +15,7 @@ function Sidebar (){
 <Link to={'/profile'}><img src={profileButton} alt="Аккаунт" className="headerAuthorised__button sidebar__button"/></Link>
 </div>
 </section>
+</main>
     );
 }
 

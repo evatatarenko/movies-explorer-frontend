@@ -5,11 +5,14 @@
     padding: 0;
     display: flex;
     position: relative;
+    align-items: center;
+    justify-content: center;
 } 
 
 .promo__logo{
     margin: 82px auto 122px;
     z-index: 0;
+    align-self: center;
     
 }
 
@@ -21,14 +24,15 @@ line-height: 1.16;
 color: #FFF; 
 text-align: center;
 font-family: 'Inter';
-margin: 184px 275px 224px 275px;
-    position: absolute;
+    letter-spacing: -2px; 
+    z-index: 2;
+    text-align: center;
 }
 
 @media screen and (max-width: 1064px) {
     .promo__text{
 
-        margin: 326px 19px 342px 19px;
+        margin: 326px 20px 342px ;
        
         }
 

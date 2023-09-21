@@ -1,6 +1,7 @@
 function Techs() {
 
     return (
+      <main>
       <section className='techs' id='techs'>
         <h2 className={'section__header'}>Технологии</h2>
         <h3 className={'techs__header'}>7 технологий</h3>
@@ -29,6 +30,7 @@ function Techs() {
       </article>
     </div>
       </section>
+      </main>
 );
   }
   

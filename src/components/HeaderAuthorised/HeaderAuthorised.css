@@ -63,6 +63,13 @@ line-height: 18px;
     display: none;
 }
 
+@media screen and (max-width: 900px) {
+    .headerAuthorised__button {
+        margin: 21px 30px 21px 200px;
+      }
+   
+}
+
 
 
 @media screen and (max-width: 768px) {

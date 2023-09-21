@@ -20,7 +20,7 @@
   }
 
   .techs__description {
-    margin: 0px 410px 100px;
+    margin: 0px 0 100px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -29,6 +29,7 @@
     text-align: center;
     letter-spacing: -0.04em;
     color: black;
+    text-align: center;
   }
 
   .techs__table {

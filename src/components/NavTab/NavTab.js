@@ -1,13 +1,15 @@
 function NavTab() {
 
   return (
-    <div className="navTab">
-      <div className={'navTab__menu'}>
-        <a href='#aboutProject' className="navTab__link">О проекте</a>
-        <a href='#techs' className="navTab__link">Технологии</a>
-        <a href='#aboutMe' className="navTab__link">Студент</a>
-      </div>
-    </div>
+    <main>
+    <nav className="navTab">
+      <ul className={'navTab__menu'}>
+        <li href='#aboutProject' className="navTab__link">О проекте</li>
+        <li href='#techs' className="navTab__link">Технологии</li>
+        <li href='#aboutMe' className="navTab__link">Студент</li>
+      </ul>
+    </nav>
+    </main>
   );
 }
 

@@ -11,19 +11,19 @@ import profileButton from '../../images/profile.svg'
 function HeaderAuthorised() {
 
     return (
-      <section className="headerAuthorised headerAuthorised_white">
+      <header className="headerAuthorised headerAuthorised_white">
         <div className="headerAuthorised__container">
         <Link to={'/'}><img src={logoHeader} alt="Логотип" className="headerAuthorised__logo"/></Link>
-          <div className="headerAuthorised__container-middle">
+          <nav className="headerAuthorised__container-middle">
           <Link to={'/movies'} className={'headerAuthorised__link '}>{'Фильмы'}</Link>
           <Link to={'/saved-movies'} className={'headerAuthorised__link '}>{'Сохранённые фильмы'}</Link>
           <Link to={'/profile'}><img src={profileButton} alt="Аккаунт" className="headerAuthorised__button"/></Link>
-          </div>
-        <button className="headerAuthorised__nav-mobile">
+          </nav>
+        <button type="button" className="headerAuthorised__nav-mobile">
             <img src={iconMenu} alt="Иконка меню" className="headerAuthorised__icon-menu"/>
           </button>
           </div>
-      </section>
+      </header>
     );
   }
   

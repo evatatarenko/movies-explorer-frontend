@@ -5,7 +5,8 @@ import logoHeader from '../../images/logo_header.png';
 function Login() {
 
   return (
-      <div className='login'>
+    <main>
+      <section className='login'>
     <div className='login__header'>
       <Link to={'/'}><img src={logoHeader} alt="Логотип пользователя" className="login__logo"/></Link>
       <h1 className="welcome-title welcome-title_login">Рады видеть!</h1>
@@ -27,7 +28,9 @@ function Login() {
         <p className="common-link common-link_grey">Ещё не зарегистрированы?</p>
         <Link to={'/signup'} className={'common-link common-link_orange'}>{'Регистрация'}</Link>
       </div>
-    </div>
+    </section>
+    </main>
+
   );
 }
   
