@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     background-color: #FFF;
-   max-width: 270px;
+    max-width: 270px;
     overflow: hidden;
     position: relative;
     box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.05);
@@ -19,8 +19,8 @@
     margin: 14px 12px 0px 12px;
     display: flex;
     justify-content: space-between;
-   padding:0;
-   height: 26px;
+    padding: 0;
+    height: 26px;
 }
 
 .moviesCard__image {
@@ -46,20 +46,19 @@
 .moviesCard__title {
     margin: 0;
     font-family: Inter;
-font-size: 13px;
-font-style: normal;
-font-weight: 500;
-line-height: normal; 
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
     color: black;
     padding: 0;
 }
 
 .moviesCard__subtitle {
     margin-left: 12px;
-    margin-top:0;
-    margin-bottom:14px;
+    margin-top: 0;
+    margin-bottom: 14px;
     padding: 0;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 11px;
@@ -75,12 +74,12 @@ line-height: normal;
     cursor: pointer;
     background-color: transparent;
     background-image: url(../../images/save8d.svg);
-background-position: center;
+    background-position: center;
     background-repeat: no-repeat;
     width: 25px;
     height: 25px;
     box-sizing: content-box;
-    padding:0;
+    padding: 0;
     background-position: center center;
     background-size: 100%;
 }
@@ -95,12 +94,12 @@ background-position: center;
     cursor: pointer;
     background-color: transparent;
     background-image: url(../../images/save_active.svg);
-background-position: center;
+    background-position: center;
     background-repeat: no-repeat;
     width: 25px;
     height: 25px;
     box-sizing: content-box;
-    padding:0;
+    padding: 0;
     background-position: center center;
     background-size: 100%;
 }
@@ -126,8 +125,9 @@ background-position: center;
 @media screen and (max-width: 768px) {
     .moviesCard {
 
-       max-width: 339px;
+        max-width: 339px;
     }
+
     .moviesCard__image {
         height: 190px;
     }
@@ -137,8 +137,9 @@ background-position: center;
 @media screen and (max-width: 320px) {
     .moviesCard {
 
-       max-width: 300px;
+        max-width: 300px;
     }
+
     .moviesCard__image {
         height: 168px;
     }

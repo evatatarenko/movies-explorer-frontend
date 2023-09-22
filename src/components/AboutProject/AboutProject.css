@@ -11,7 +11,6 @@
     margin: 0px 210px 0px 70px;
     padding-bottom: 25px;
     padding-top: 110px;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 22px;
@@ -35,7 +34,7 @@
     grid-column-gap: 40px;
     -webkit-padding-start: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(550px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
     justify-items: center;
     list-style: none;
     padding-inline-start: 0
@@ -48,7 +47,6 @@
     grid-column-gap: 0px;
     display: grid;
     grid-template-columns: 1fr 4fr;
-    /* grid-template-columns: 230px 915px; */
     grid-template-rows: 36px 36px;
     list-style: none;
     padding-inline-start: 0;
@@ -62,19 +60,17 @@
 
 .aboutProject__table__title {
     margin: 0;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 24px;
-    letter-spacing:-0.8px;
+    letter-spacing: -0.8px;
     color: black;
 }
 
 .aboutProject__table__text {
     margin: 0;
     margin-top: 25px;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -85,7 +81,6 @@
 .aboutProject__table__text_progress {
     margin: 0;
     padding: 9px 14px;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -108,9 +103,10 @@
     .aboutProject__table__items {
         width: 320px;
     }
+
     .aboutProject__table {
-        margin: 70px 50px  35px;
-        grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+        margin: 70px 50px 30px;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         grid-column-gap: 28px;
     }
 }
@@ -122,27 +118,36 @@
         padding-top: 87px;
         width: 87%;
     }
+
     .aboutProject__table_progress {
-        margin: 50px 50px 95px;
+        margin: 57px 50px 90px;
     }
+
     .aboutProject__table__text {
         font-size: 12px;
         line-height: 18px;
+    }
+
+    .aboutProject__table__text {
+        margin-top: 21px;
     }
 }
 
 @media screen and (max-width: 765px) {
     .aboutProject__table {
-        margin: 60px 15px  6px;
-        grid-template-columns: repeat(auto-fit,minmax(285px,1fr));
+        margin: 60px 15px 6px;
+        grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
     }
+
     .aboutProject__table__items {
         width: 285px;
     }
+
     .aboutProject__table__title {
         font-size: 18px;
         line-height: 22px;
     }
+
     .aboutProject__table__text {
         font-size: 11px;
         line-height: 16px;
@@ -150,8 +155,8 @@
         margin-bottom: 55px;
     }
 
-    
-    
+
+
 }
 
 @media screen and (max-width: 500px) {
@@ -163,10 +168,12 @@
         width: 89%;
         padding-bottom: 30px;
     }
+
     .aboutProject__table_progress {
         margin: 0px 17px 55px;
         grid-template-columns: 3fr 5fr;
     }
+
     .aboutProject__table__text_progress {
         font-size: 11px;
         line-height: 13px;

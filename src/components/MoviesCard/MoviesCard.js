@@ -6,7 +6,7 @@ function MoviesCard(props) {
   return(
     <main>
     <article className="moviesCard">
-      <img src={props.movie.image} alt={'Постер'} className="moviesCard__image"  />
+      <img src={props.movie.image} alt={props.movie.alt} className="moviesCard__image"  />
       <div className="moviesCard__title-block">
         <div className="moviesCard__likes">
           <h2 className="moviesCard__title">{props.movie.title}</h2>

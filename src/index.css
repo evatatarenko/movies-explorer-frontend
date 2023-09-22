@@ -39,4 +39,8 @@ body {
 @import url(./components/PageNotFound/PageNotFound.css);
 @import url(./components/Sidebar/Sidebar.css);
 
-* { outline: 1px solid red; }
+body {
+  margin: 0;
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+}
+

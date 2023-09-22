@@ -1,4 +1,4 @@
-import logoHeader from '../../images/logo_header.png'; 
+import logoHeader from '../../images/logo__header.svg'; 
 import { Link } from 'react-router-dom'; 
 import iconMenu from '../../images/icon__COLOR_icon-main.svg';
 import profileButton from '../../images/profile.svg'
@@ -8,7 +8,7 @@ import profileButton from '../../images/profile.svg'
 
 
 
-function HeaderAuthorised() {
+function HeaderAuthorised({setIsMenuOpen}) {
 
     return (
       <header className="headerAuthorised headerAuthorised_white">
@@ -19,7 +19,7 @@ function HeaderAuthorised() {
           <Link to={'/saved-movies'} className={'headerAuthorised__link '}>{'Сохранённые фильмы'}</Link>
           <Link to={'/profile'}><img src={profileButton} alt="Аккаунт" className="headerAuthorised__button"/></Link>
           </nav>
-        <button type="button" className="headerAuthorised__nav-mobile">
+        <button type="button" className="headerAuthorised__nav-mobile" onClick={()=> setIsMenuOpen(true)}>
             <img src={iconMenu} alt="Иконка меню" className="headerAuthorised__icon-menu"/>
           </button>
           </div>

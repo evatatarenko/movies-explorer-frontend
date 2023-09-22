@@ -11,11 +11,12 @@
 
 .filterCheckbox__tumbler {
     margin: 0;
+    width:36px;
+    cursor: pointer;
 }
 
 .filterCheckbox__title {
     margin: 0;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -28,4 +29,8 @@
         font-size: 11px; 
     }
 
+}
+
+.filterCheckbox__tumbler:hover {
+    opacity: 0.5;
 }
