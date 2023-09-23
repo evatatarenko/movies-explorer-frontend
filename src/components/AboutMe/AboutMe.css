@@ -4,7 +4,7 @@
     width: 100%;
     background-color: #FFF;
     display: flex;
-    justify-content: center;
+   justify-content: center;
     flex-direction: column;
 }
 
@@ -64,7 +64,6 @@
     margin: 100px 0 0 0;
     text-decoration: none;
     color: #000;
-    font-family: Inter;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
@@ -77,7 +76,7 @@
     margin: 0 70px 0 70px;
 }
 
-@media screen and (max-width: 786px) {
+@media screen and (max-width: 850px) {
 
     .aboutMe__container-info {
         margin: 0 50px 0 50px;
@@ -134,6 +133,7 @@
     .aboutMe__img {
         max-width: 292px;
         margin: 60px 0 38px 0;
+        align-self: center;
 
     }
 
@@ -147,11 +147,17 @@
     }
 
     .aboutMe__link {
-        margin: 36px 0 0 0;
+        margin: 40px 0 0 0;
     }
 
 }
 
 .aboutMe__link:hover{
     opacity: 0.5;
+}
+
+@media screen and (min-width: 1330px){
+    .aboutMe {
+        align-items: center;
+    } 
 }

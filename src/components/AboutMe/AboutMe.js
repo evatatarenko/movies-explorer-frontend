@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 function AboutMe() {
 
     return (
-      <main>
       <section className="aboutMe" id='aboutMe'>
           <h2 className={'section__header'}>Студент</h2>
           <div className={'aboutMe__container-info'}>
@@ -21,7 +20,6 @@ function AboutMe() {
       <img src={imgUser} alt="Портрет пользователя" className="aboutMe__img"/>
       </div> 
       </section>
-      </main>
     );
   }
   

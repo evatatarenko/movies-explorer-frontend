@@ -30,7 +30,7 @@
 
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 370px) {
     .moviesCardList {
         margin: 50px 0 50px;
         padding: 50px 0 0 0;

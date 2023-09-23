@@ -20,6 +20,7 @@
   border-radius: 40px;
   align-items: center;
   margin: 0;
+  padding-left: 22px;
 }
 
 
@@ -90,6 +91,11 @@
     width: 70%;
 
   }
+  
+  .searchForm__input-form {
+    padding-left: 20px;
+
+  }
 
   .searchForm__input::placeholder {
     font-size: 11px;
@@ -97,5 +103,5 @@
 
 }
 .searchForm__input:focus{
-color:#A0A0A0;
+color:rgb(216, 56, 192);
 }

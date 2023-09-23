@@ -5,6 +5,8 @@
   background-color: #F5F5F5;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .techs__header {
@@ -33,15 +35,17 @@
 }
 
 .techs__table {
-  margin: 0px 24% 100px;
-  grid-column-gap: 24px;
+  max-width: 690px;
+  grid-column-gap: 11px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(49px, 1fr));
   justify-items: center;
   list-style: none;
+  padding: 0;
+  margin: 0 0 100px 0;
 }
 
-.techs__table_article {
+.techs__table-item {
   width: 90px;
   height: 60px;
   border-radius: 10px;
@@ -51,29 +55,29 @@
   justify-content: center;
 }
 
-.techs__table_text {
+.techs__table-item_text {
   margin: 0;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.56px; 
   color: #000000;
 }
 
-@media screen and (max-width: 1205px) {
-  .techs__table {
-    margin: 0px 20% 100px;
-  }
-}
+
 
 @media screen and (max-width: 1100px) {
   .techs__table {
-    margin: 0px 15% 100px;
+    margin: 0 0 100px;
     grid-template-columns: repeat(auto-fit, minmax(85px, 4fr));
     grid-row-gap: 10px;
   }
+}
+
+.techs__table-item_text {
+  font-size: 12px;
 }
 
 @media screen and (max-width: 920px) {
@@ -87,26 +91,22 @@
     margin: 0 21% 85px;
   }
 
-  .techs__table {
-    margin: 0px 70px 90px;
-    grid-column-gap: 10px;
-  }
-
-  .techs__table_article {
-    width: 85px;
-  }
-
   .techs__table_text {
     font-size: 12px;
     line-height: 15px;
   }
-}
 
-@media screen and (max-width: 770px) {
+  .techs__table-item {
+    width: 84px;
+    height: 57px;
+  }
+
   .techs__table {
-    margin: 0px 5% 90px;
+    grid-column-gap: 10px;
+    margin: 0 0 90px 0;
   }
 }
+
 
 @media screen and (max-width: 750px) {
   .techs__description {
@@ -115,16 +115,17 @@
     margin: 0 6% 52px;
   }
 
-  .techs__table {
-    margin: 0px 70px 65px;
-    row-gap: 8px;
-  }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 662px) {
   .techs__header {
     margin: 60px auto 20px;
     font-size: 30px;
     line-height: 36px;
+  }
+
+  .techs__table {
+    max-width: 200px;
+    margin: 0 0 70px 0;
   }
 }

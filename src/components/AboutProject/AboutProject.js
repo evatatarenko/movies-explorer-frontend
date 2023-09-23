@@ -1,7 +1,6 @@
 function AboutProject() {
 
     return (
-        <main>
       <section className="aboutProject" id='aboutProject'>
           <h2 className={'section__header'}>О проекте</h2>
           <ul className={'aboutProject__table'}>
@@ -21,7 +20,6 @@ function AboutProject() {
                   <p className={'aboutProject__table__text_progress'}> Front-end</p>
           </ul>
       </section>
-      </main>
     );
   }
   

@@ -61,6 +61,14 @@
     display: none;
 }
 
+.headerAuthorised__logo:hover{
+    opacity: 0.5;
+}
+
+.headerAuthorised__nav-mobile:hover{
+    opacity: 0.5;  
+}
+
 @media screen and (max-width: 900px) {
     .headerAuthorised__button {
         margin: 21px 30px 21px 200px;

@@ -4,7 +4,6 @@ function MoviesCard(props) {
 
 
   return(
-    <main>
     <article className="moviesCard">
       <img src={props.movie.image} alt={props.movie.alt} className="moviesCard__image"  />
       <div className="moviesCard__title-block">
@@ -15,7 +14,6 @@ function MoviesCard(props) {
         <p className="moviesCard__subtitle">{"1ч42м"}</p>
       </div>
     </article>
-    </main>
   );
 }
 

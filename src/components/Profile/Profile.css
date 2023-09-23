@@ -30,7 +30,7 @@
 .profile__form-input {
     margin: 0;
     padding: 0;
-    outline: none;
+    outline: black;
     border: none;
     width: 100%;
     display: flex;
@@ -43,7 +43,7 @@
 .profile__form-text {
     margin: 0;
     padding: 0;
-    outline: none;
+    outline: black;
     border: none;
     color: #000;
     font-size: 11px;
@@ -88,6 +88,10 @@
 .common-link_red {
     color: #EE3465;
     font-size: 13px;
+}
+
+.profile__form-text:focus{
+    color:#EE3465;
 }
 
 @media screen and (max-width: 768px) {

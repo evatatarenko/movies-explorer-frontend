@@ -1,36 +1,34 @@
 function Techs() {
 
     return (
-      <main>
       <section className='techs' id='techs'>
         <h2 className={'section__header'}>Технологии</h2>
         <h3 className={'techs__header'}>7 технологий</h3>
         <p className={'techs__description'}>На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
-        <div className={'techs__table'}>
-      <article className={'techs__table_article'}>
-        <p className={'techs__table_text'}>HTML</p>
-      </article>
-      <article className={'techs__table_article'}>
-        <p className={'techs__table_text'}>CSS</p>
-      </article>
-      <article className={'techs__table_article'}>
-        <p className={'techs__table_text'}>JS</p>
-      </article>
-      <article className={'techs__table_article'}>
-        <p className={'techs__table_text'}>React</p>
-      </article>
-      <article className={'techs__table_article'}>
-        <p className={'techs__table_text'}>Git</p>
-      </article>
-      <article className={'techs__table_article'}>
-        <p className={'techs__table_text'}>Express.js</p>
-      </article>
-      <article className={'techs__table_article'}>
-        <p className={'techs__table_text'}>mongoDB</p>
-      </article>
-    </div>
+        <ul className={'techs__table'}>
+      <li className={'techs__table-item'}>
+        <p className={'techs__table-item_text'}>HTML</p>
+      </li>
+      <li className={'techs__table-item'}>
+        <p className={'techs__table-item_text'}>CSS</p>
+      </li>
+      <li className={'techs__table-item'}>
+        <p className={'techs__table-item_text'}>JS</p>
+      </li>
+      <li className={'techs__table-item'}>
+        <p className={'techs__table-item_text'}>React</p>
+      </li>
+      <li className={'techs__table-item'}>
+        <p className={'techs__table-item_text'}>Git</p>
+      </li>
+      <li className={'techs__table-item'}>
+        <p className={'techs__table-item_text'}>Express.js</p>
+      </li>
+      <li className={'techs__table-item'}>
+        <p className={'techs__table-item_text'}>mongoDB</p>
+      </li>
+    </ul>
       </section>
-      </main>
 );
   }
   
