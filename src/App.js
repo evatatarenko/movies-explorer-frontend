@@ -14,8 +14,9 @@ import Movies from './components/Movies/Movies';
 
 
 
+
 function App() {
-  const [setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   return (
      
     <div className="app">
@@ -28,20 +29,20 @@ function App() {
      </div>} />
      <Route  path="/movies" element={
        <div>
-      <HeaderAuthorised setIsMenuOpen={setIsMenuOpen}/> 
+      <HeaderAuthorised setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}/> 
       <Movies />
       <More/>
       <Footer />
      </div>} />
      <Route  path="/saved-movies" element={
        <div>
-      <HeaderAuthorised setIsMenuOpen={setIsMenuOpen}/> 
-      <Movies />
+      <HeaderAuthorised setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}/> 
+      <Movies  />
       <Footer />
      </div>} />
      <Route  path="/profile" element={
       <div>
-     <HeaderAuthorised setIsMenuOpen={setIsMenuOpen}/> 
+     <HeaderAuthorised setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}/> 
      <Profile/>
      </div>} />
   

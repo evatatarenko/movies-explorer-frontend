@@ -7,8 +7,10 @@ console.log(event.target.value)
 }
 
     return (
+      <main>
       <section className="profile" >
         <h1 className="welcome-title">Привет, Виталий!</h1>
+      
         <form className="profile__form">
           <div className="profile__form-input profile__form-input_border">
             <label className="profile__form-text">{"Имя"}</label>
@@ -26,6 +28,7 @@ console.log(event.target.value)
             <Link to={'/'} className={'common-link common-link_red'}>{'Выйти из аккаунта'}</Link>
           </div>
       </section>
+      </main>
     );
   }
     

@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import Sidebar from '../Sidebar/Sidebar';
+import React  from 'react';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 
@@ -129,10 +128,8 @@ const savedData = [
 
 
 function Movies() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
     return(
         <main>
-    {isMenuOpen && <Sidebar setIsMenuOpen={setIsMenuOpen}/>}
       <SearchForm />
       <MoviesCardList data={savedData} />
       </main>

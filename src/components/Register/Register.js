@@ -6,6 +6,7 @@ function Register() {
     console.log(event.target.value)
     }
   return (
+    <main>
     <section className='login'>
     <div className='login__header'>
       <Link to={'/'}><img src={logoHeader} alt="Логотип пользователя" className="login__logo"/></Link>
@@ -34,6 +35,7 @@ function Register() {
         <Link to={'/signin'} className={'common-link common-link_orange'}>{'Войти'}</Link>
       </div>
       </section>
+      </main>
   );
 }
   

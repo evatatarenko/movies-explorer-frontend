@@ -55,7 +55,7 @@
   justify-content: center;
 }
 
-.techs__table-item_text {
+.techs__table-item-text {
   margin: 0;
   font-style: normal;
   font-weight: 400;
@@ -76,7 +76,7 @@
   }
 }
 
-.techs__table-item_text {
+.techs__table-item-text {
   font-size: 12px;
 }
 

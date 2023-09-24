@@ -112,7 +112,19 @@
     }
 }
 
-@media screen and (max-width: 714px) {
+
+@media screen and (max-width: 770px) {
+
+
+
+    .aboutMe__img {
+        margin: 0 0 0 10px;
+    }
+
+}
+
+
+@media screen and (max-width: 727px) {
     .aboutMe__container-info {
         margin: 0 14px 0 14px;
         flex-direction: column-reverse;
@@ -156,7 +168,7 @@
     opacity: 0.5;
 }
 
-@media screen and (min-width: 1330px){
+@media screen and (min-width: 1290px){
     .aboutMe {
         align-items: center;
     } 

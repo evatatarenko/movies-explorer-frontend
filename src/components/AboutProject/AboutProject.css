@@ -40,7 +40,7 @@
     padding-inline-start: 0
 }
 
-.aboutProject__table_progress {
+.aboutProject__table-progress {
     margin: 70px;
     margin-top: 40px;
     margin-bottom: 95px;
@@ -52,13 +52,13 @@
     padding-inline-start: 0;
 }
 
-.aboutProject__table__items {
+.aboutProject__table-items {
     margin: 0;
     position: relative;
     width: 550px;
 }
 
-.aboutProject__table__title {
+.aboutProject__table-title {
     margin: 0;
     font-style: normal;
     font-weight: 400;
@@ -68,7 +68,7 @@
     color: black;
 }
 
-.aboutProject__table__text {
+.aboutProject__table-text {
     margin: 0;
     margin-top: 25px;
     font-style: normal;
@@ -78,7 +78,7 @@
     color: black;
 }
 
-.aboutProject__table__text_progress {
+.aboutProject__table-text-progress {
     margin: 0;
     padding: 9px 14px;
     font-style: normal;
@@ -89,18 +89,18 @@
     color: #8B8B8B;
 }
 
-.aboutProject__table__text_progress_white {
+.aboutProject__table-text-progress_white {
     color: black;
     background-color: #F2F2F2;
 }
 
-.aboutProject__table__text_progress_green {
+.aboutProject__table-text-progress_green {
     background-color: #3DDC84;
     color: #000000;
 }
 
 @media screen and (max-width: 1260px) {
-    .aboutProject__table__items {
+    .aboutProject__table-items {
         width: 320px;
     }
 
@@ -119,16 +119,16 @@
         width: 87%;
     }
 
-    .aboutProject__table_progress {
+    .aboutProject__table-progress {
         margin: 57px 50px 90px;
     }
 
-    .aboutProject__table__text {
+    .aboutProject__table-text {
         font-size: 12px;
         line-height: 18px;
     }
 
-    .aboutProject__table__text {
+    .aboutProject__table-text {
         margin-top: 21px;
     }
 }
@@ -139,16 +139,16 @@
         grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
     }
 
-    .aboutProject__table__items {
+    .aboutProject__table-items {
         width: 285px;
     }
 
-    .aboutProject__table__title {
+    .aboutProject__table-title {
         font-size: 18px;
         line-height: 22px;
     }
 
-    .aboutProject__table__text {
+    .aboutProject__table-text {
         font-size: 11px;
         line-height: 16px;
         margin-top: 15px;
@@ -169,12 +169,12 @@
         padding-bottom: 30px;
     }
 
-    .aboutProject__table_progress {
+    .aboutProject__table-progress {
         margin: 0px 17px 55px;
         grid-template-columns: 3fr 5fr;
     }
 
-    .aboutProject__table__text_progress {
+    .aboutProject__table-text-progress {
         font-size: 11px;
         line-height: 13px;
         font-weight: 400;
