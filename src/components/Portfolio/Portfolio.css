@@ -61,6 +61,11 @@
   letter-spacing: -1.12px;
 }
 
+.portfolio__container {
+  margin:0;
+  padding:0;
+}
+
 @media screen and (max-width: 1200px) {
   .portfolio__nav-element {
     width: 900px;
@@ -169,8 +174,13 @@
 
 @media screen and (min-width: 1290px) {
 
-  .portfolio__header {
-   align-self: center;
+  .portfolio__container {
 
+align-self: center;
+justify-self: center;
+
+  }
+  .portfolio__header{
+    margin-left: 0;
   }
 }
