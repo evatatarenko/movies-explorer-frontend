@@ -11,7 +11,7 @@ function Sidebar ({setIsMenuOpen}){
 <Link to={'/movies'} className={'sidebar__link'}>{'Фильмы'}</Link>
 <Link to={'/saved-movies'} className={'sidebar__link'}>{'Сохранённые фильмы'}</Link>
 </nav>
-<Link to={'/profile'}><img src={profileButton} alt="Аккаунт" className="headerAuthorised__button sidebar__button"/></Link>
+<Link to={'/profile'}><img src={profileButton} alt="Аккаунт" className="headerAuthorised__button sidenav__button"/></Link>
 </div>
 </section>
     );

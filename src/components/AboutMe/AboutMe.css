@@ -79,7 +79,8 @@
 @media screen and (max-width: 850px) {
 
     .aboutMe__container-info {
-        margin: 0 50px 0 50px;
+        justify-content: center;
+        align-items: center;
     }
 
     .aboutMe__header {
@@ -116,7 +117,11 @@
 
 
     .aboutMe__img {
-        max-width: 220px;
+        max-width: 255px;
+    }
+
+    .aboutMe__container-info {
+        margin: 0 50px 0 50px;
     }
 
 }

@@ -29,12 +29,12 @@
 @media screen and (max-width: 1064px) {
     .promo__text {
 
-        margin: 326px 20px 342px;
+        margin: 320px 20px 342px;
 
     }
 
     .promo {
-        background-position: top 224px center;
+        background-position: top 220px center;
     }
 
 
@@ -47,7 +47,7 @@
     .promo__text {
         font-size: 31px;
         line-height: 39px;
-        margin: 207px auto 246px;
+        margin: 205px auto 246px;
         letter-spacing: -1.24px;
 
     }

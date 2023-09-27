@@ -115,22 +115,25 @@
 @media screen and (max-width: 920px) {
     .section__header {
         margin-left: 50px;
-        padding-top: 87px;
+        padding-top: 89px;
         width: 87%;
     }
 
     .aboutProject__table-progress {
-        margin: 57px 50px 90px;
+        margin: 61px 50px 90px;
     }
 
     .aboutProject__table-text {
         font-size: 12px;
         line-height: 18px;
-    }
-
-    .aboutProject__table-text {
         margin-top: 21px;
     }
+    .aboutProject__table-progress {
+        margin-bottom: 87px;
+    }
+
+
+   
 }
 
 @media screen and (max-width: 765px) {
@@ -162,7 +165,7 @@
 @media screen and (max-width: 550px) {
     .section__header {
         margin-left: 15px;
-        padding-top: 70px;
+        padding-top: 73px;
         font-size: 18px;
         line-height: 22px;
         width: 89%;

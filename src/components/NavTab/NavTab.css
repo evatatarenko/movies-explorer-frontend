@@ -25,6 +25,9 @@
 }
 
 @media screen and (max-width: 500px) {
+    .navTab {
+        padding: 22px 0px;
+    }
     .navTab__link {
         font-size: 11px;
     }
