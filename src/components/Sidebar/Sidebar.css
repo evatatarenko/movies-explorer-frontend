@@ -30,7 +30,7 @@
     margin-bottom: 119%;
 }
 
-.sidenav__button {
+.sidebar__button {
     margin: 0 0 90px 0;
 }
 
@@ -49,15 +49,15 @@ cursor: pointer;
 .sidebar__button-close {
     background-image: url(../../images/Group.svg);
     border: none;
-    width: 32px;
-    height: 32px;
+    width: 22px;
+    height: 22px;
     background-color: transparent;
     background-position: center center;
     background-repeat: no-repeat;
     align-self: flex-end;
     position: absolute;
-    top: 2%;
-    right: 4.5%;
+    top: 3%;
+    right: 5%;
     cursor: pointer;
 }
 
@@ -75,13 +75,8 @@ cursor: pointer;
         margin-bottom: 137%;
     }
 
-    .sidenav__button {
+    .sidebar__button {
         margin: 0 0 46px 0;
-    }
-
-    .sidebar__button-close {
-        top: 1%;
-        right: 4.5%;
     }
 }
 

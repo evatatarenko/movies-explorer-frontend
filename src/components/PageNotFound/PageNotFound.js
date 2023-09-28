@@ -1,16 +1,25 @@
-import { Link } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-function Result() {
+import "../PageNotFound/PageNotFound.css";
 
-    return (
-      <main>
-      <section className='result'>
-      <h1 className='result__title'>404</h1>
-      <p className='result__subtitle'>Страница не найдена</p>
-      <Link to={'/'} className={'common-link common-link_red'}>{'Назад'}</Link>
-      </section>
-      </main>
-    );
-  }
-    
-  export default Result;
+function PageNotFound() {
+  const navigate = useNavigate();
+
+  return (
+    <div className="pageNotFound">
+      <h2 className="pageNotFound__title">404</h2>
+      <p className="pageNotFound__message">Страница не найдена</p>
+      <button
+        type="button"
+        value="Назад"
+        onClick={() => navigate(-1)}
+        className="pageNotFound__button"
+      >
+        Назад
+      </button>
+    </div>
+  );
+}
+
+export default PageNotFound;
