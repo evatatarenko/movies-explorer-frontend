@@ -1,4 +1,4 @@
-export const BASE_URL = "https://api.nomoreparties.co";
+export const BASE_URL = "https://api.tatarenko-diploma.nomoredomainsicu.ru";
 
 function getResponse(res) {
   if (!res.ok) {

@@ -17,13 +17,13 @@ class MainApi {
   };
 
   getUserIfnoApi = () => {
-    return fetch(this._url + "users/me").then((res) => {
+    return fetch(this._url + "/users/me").then((res) => {
       return this._checkingResponse(res);
     });
   };
 
   sendUserIfno = (name, email) => {
-    return fetch(this._url + "users/me", {
+    return fetch(this._url + "/users/me", {
       method: "PATCH",
       body: JSON.stringify(name, email),
     }).then((res) => {
@@ -64,7 +64,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  url: "https://api.nomoreparties.co/beatfilm-movies",
+  url: "https://api.tatarenko-diploma.nomoredomainsicu.ru",
 });
 
 export default mainApi;
