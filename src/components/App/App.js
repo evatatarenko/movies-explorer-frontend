@@ -26,7 +26,7 @@ function App() {
   const [foundMovies, setFoundMovies] = useState(null);
   const [shortMovies, setShortMovies] = useState(null);
   const [savedMovies, setSavedMovies] = useState(null);
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [search, setSearch] = useState("");
@@ -54,10 +54,12 @@ function App() {
   }, [foundMovies, search, isChecked]);
 
   function handleLogin({ email, password }) {
+    console.log("handleRegister", email, password)
     setIsLoading(true);
     auth
       .authorize(email, password)
       .then((data) => {
+        console.log('logged in', data)
         if (data) {
           localStorage.setItem("isAuth", "true");
           setLoggedIn(true);
@@ -80,11 +82,13 @@ function App() {
   }
 
   function handleRegister({ name, email, password }) {
+    console.log("handleRegister", name, email, password)
     setIsLoading(true);
     auth
       .register(name, email, password)
-      .then(() => {
-        navigate("/movies", { replace: true });
+      .then((res) => {
+        console.log(res,'registered')
+        // navigate("/sign-in", { replace: true });
         handleLogin({ email, password });
       })
       .catch((err) => {
@@ -109,6 +113,7 @@ function App() {
       auth
         .checkToken()
         .then((res) => {
+          console.log(res,'res')
           setLoggedIn(true);
           setCurrentUser(res);
         })

@@ -21,7 +21,7 @@ function Register({ onRegister, isSubmitError, errorAuth }) {
       pathEdit=""
       path="/sign-in"
       textLink="Войти"
-      onSubmit={handleSubmit}
+      handleSubmit={handleSubmit}
       isDisabled={!isValid}
       isSubmitError={isSubmitError}
       errorAuth={errorAuth}

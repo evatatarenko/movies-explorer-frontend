@@ -12,11 +12,12 @@ function Authorization({
   linkEdit,
   textLink,
   onClick,
-  onSubmit,
+  handleSubmit,
   isDisabled = false,
   errorAuth,
 }) {
   console.log({ type });
+  console.log(handleSubmit);
   return (
     <section className="login">
       <div className="login__header">
@@ -25,14 +26,14 @@ function Authorization({
         </Link>
         <h1 className="welcome-title welcome-title_login">{title}</h1>
       </div>
-      <form className="login__form" onSubmit={onSubmit}>
+      <form className="login__form" onSubmit={handleSubmit}>
         {children}
         <button
           type="submit"
           className="login__button login__button-login"
           disabled={isDisabled}
           name="submit_btn"
-          onSubmit={onSubmit}
+          onSubmit={handleSubmit}
           value={textButton}
         >
           {textButton}
