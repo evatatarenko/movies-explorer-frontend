@@ -9,6 +9,7 @@ function Login({ onLogin, isSubmitError, errorAuth }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(values)
     if (!values.email || !values.password) {
       return;
     }
@@ -24,7 +25,7 @@ function Login({ onLogin, isSubmitError, errorAuth }) {
       pathEdit="/profile"
       path="/sign-up"
       textLink="Регистрация"
-      onSubmit={handleSubmit}
+      handleSubmit={handleSubmit}
       isDisabled={!isValid}
       isSubmitError={isSubmitError}
       errorAuth={errorAuth}

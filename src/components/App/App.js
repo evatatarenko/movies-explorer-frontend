@@ -16,7 +16,7 @@ import * as auth from "../../utils/auth";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import PopupWithMessage from "../PopupWithMessage/PopupWithMessage";
 import PopupWithInfoWin from "../PopupWithInfo/PopupWithInfoWin/PopupWithInfoWin";
-import ProtectedRouteElement from "../ProtectedRoute";
+import ProtectedRoute from "../ProtectedRoute";
 import Preloader from "../Movies/Preloader/Preloader";
 import { DURATION_SHORT_MOVIE } from "../../utils/constants";
 
@@ -61,9 +61,9 @@ function App() {
       .then((data) => {
         console.log('logged in', data)
         if (data) {
-          localStorage.setItem("isAuth", "true");
+          localStorage.setItem("jwt", data.token);
           setLoggedIn(true);
-          navigate("/movies", { replace: true });
+          navigate("/movies");
         }
       })
       .catch((err) => {
@@ -107,7 +107,7 @@ function App() {
   }
 
   const handleTokenCheck = useCallback(() => {
-    const token = localStorage.getItem("isAuth");
+    const token = localStorage.getItem("jwt");
 
     if (token) {
       auth
@@ -119,17 +119,18 @@ function App() {
         })
         .catch((err) => {
           console.log(err);
-          handleSignout();
+          // handleSignout();
         });
     }
   }, []);
 
   useEffect(() => {
+    const token = localStorage.getItem("jwt");
     if (loggedIn) {
       mainApi
-        .getUserIfnoApi()
+        .getUserIfnoApi(token)
         .then((res) => {
-          setCurrentUser(res);
+          setCurrentUser(res.data);
         })
         .catch((err) => {
           console.log(err);
@@ -252,8 +253,9 @@ function App() {
 
   function handleGetSavedMovies() {
     if (loggedIn) {
+      const token = localStorage.getItem("jwt");
       mainApi
-        .getSavedMovies()
+        .getSavedMovies(token)
         .then((res) => {
           const addSavedMovie = res.filter(
             (i) => i.owner === currentUser._id
@@ -268,8 +270,9 @@ function App() {
   }
 
   function handleSaveMovie(movie) {
+    const token = localStorage.getItem("jwt");
     mainApi
-      .savedMovies(movie)
+      .savedMovies(movie, token)
       .then(() => {
         const getSavedMovies = [...savedMovies];
         setSavedMovies(getSavedMovies);
@@ -300,11 +303,12 @@ function App() {
   }
 
   function handleSignout() {
+    const token = localStorage.getItem("jwt");
     setLoggedIn(false);
     setCurrentUser({});
     localStorage.clear();
     auth
-      .logout()
+      .logout(token)
       .then(() => {
         navigate("/", { replace: true });
         localStorage.clear();
@@ -343,7 +347,7 @@ function App() {
           <Route
             path="/profile"
             element={
-              <ProtectedRouteElement
+              <ProtectedRoute
                 element={Profile}
                 onUpdateUser={handleUpdateUser}
                 loggedIn={loggedIn}
@@ -356,7 +360,7 @@ function App() {
           <Route
             path="/movies"
             element={
-              <ProtectedRouteElement
+              <ProtectedRoute
                 element={Movies}
                 loggedIn={loggedIn}
                 shortMovies={shortMovies}
@@ -379,7 +383,7 @@ function App() {
           <Route
             path="/saved-movies"
             element={
-              <ProtectedRouteElement
+              <ProtectedRoute
                 element={SavedMovies}
                 loggedIn={loggedIn}
                 savedMovies={savedMovies}

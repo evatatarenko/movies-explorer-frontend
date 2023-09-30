@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes, NavLink, Link, useLocation } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
-import logoHeader from '../../images/logo__header.svg'; 
+import logoHeader from '../../images/logo__header.svg';
 
 import "../Header/Header.css";
 
@@ -14,21 +14,15 @@ function Header({ loggedIn }) {
       location.pathname === "/saved-movies" ||
       location.pathname === "/profile") && (
       <>
-        <Routes>
           {loggedIn ? (
-            <Route
-              path="/"
-              element={
+            location.pathname === "/" &&
                 <header className="header">
                   <Link to="/" className="header__logo"></Link>
                   <Navigation />
                 </header>
-              }
-            />
+
           ) : (
-            <Route
-              path="/"
-              element={
+            location.pathname === "/" &&
                 <header className="header">
                   <Link to="/" className="header__logo"></Link>
                   <div className="header__container">
@@ -48,15 +42,11 @@ function Header({ loggedIn }) {
                     </nav>
                   </div>
                 </header>
-              }
-            />
+
           )}
-        </Routes>
-        <Routes>
-          <Route path="/movies" element={<Navigation />} />
-          <Route path="/saved-movies" element={<Navigation />} />
-          <Route path="/profile" element={<Navigation />} />
-        </Routes>
+          {location.pathname === "/movies" && <Navigation />}
+          {location.pathname === "/saved-movies" && <Navigation />}
+          {location.pathname === "/profile" && <Navigation />}
       </>
     )
   );

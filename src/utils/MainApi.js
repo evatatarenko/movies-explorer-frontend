@@ -10,14 +10,25 @@ class MainApi {
     return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  getSavedMovies = () => {
-    return fetch(this._url).then((res) => {
+  getSavedMovies = (token) => {
+    return fetch(this._url, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`, // Добавляем заголовок авторизации
+      },
+    }).then((res) => {
       return this._checkingResponse(res);
     });
   };
 
-  getUserIfnoApi = () => {
-    return fetch(this._url + "/users/me").then((res) => {
+  getUserIfnoApi = (token) => {
+    return fetch(this._url + "/users/me", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`, // Добавляем заголовок авторизации
+      },
+    }).then((res) => {
       return this._checkingResponse(res);
     });
   };
@@ -39,10 +50,13 @@ class MainApi {
     });
   };
 
-  savedMovies = (movie) => {
+  savedMovies = (movie, token) => {
     return fetch(this._url, {
       method: "POST",
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`, // Добавляем заголовок авторизации
+      },
       credentials: "include",
       body: JSON.stringify({
         country: movie.country,

@@ -16,8 +16,6 @@ function Authorization({
   isDisabled = false,
   errorAuth,
 }) {
-  console.log({ type });
-  console.log(handleSubmit);
   return (
     <section className="login">
       <div className="login__header">

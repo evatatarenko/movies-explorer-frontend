@@ -33,25 +33,27 @@ export const authorize = (email, password) => {
   });
 };
 
-export const checkToken = () => {
+export const checkToken = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`, // Добавляем заголовок авторизации
     },
-    credentials: "include",
+    // credentials: "include",
   }).then((res) => {
     return getResponse(res);
   });
 };
 
-export const logout = () => {
+export const logout = (token) => {
   return fetch(`${BASE_URL}/signout`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`, // Добавляем заголовок авторизации
     },
-    credentials: "include",
+    // credentials: "include",
   }).then((res) => {
     return getResponse(res);
   });
