@@ -1,4 +1,4 @@
-// import imgUser from "../../images/user_img.svg";
+ import imgUser from "../../../images/user_img.svg";
 import { Link } from "react-router-dom";
 
 function AboutMe() {
@@ -30,7 +30,7 @@ function AboutMe() {
           </div>
         </div>
         <img
-          // src={imgUser}
+          src={imgUser}
           alt="Портрет пользователя"
           className="aboutMe__img"
         />

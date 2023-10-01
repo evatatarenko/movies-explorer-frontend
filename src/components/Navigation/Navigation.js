@@ -1,16 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import "../Navigation/Navigation.css";
-import logoHeader from '../../images/logo__header.svg'; 
-import profileButton from '../../images/profile.svg'; 
+import logoHeader from "../../images/logo__header.svg";
+import profileButton from "../../images/profile.svg";
+import iconMenu from "../../images/icon__COLOR_icon-main.svg";
 
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const location = useLocation();
 
   return (
     <>
-      <div className="headerAuthorised headerAuthorised_white">
+      <div
+        className={`headerAuthorised ${
+          location.pathname !== "/"
+            ? "headerAuthorised_white"
+            : "headerAuthorised_blue"
+        }`}
+      >
         <div className="headerAuthorised__container">
           <Link to={"/"}>
             <img
@@ -20,13 +28,13 @@ function Navigation() {
             />
           </Link>
           <nav className="headerAuthorised__container-middle">
-            <Link to={"/movies"} className={"headerAuthorised__link "}>
+            <Link to={"/movies"} className={"headerAuthorised__link"}>
               {"Фильмы"}
             </Link>
-            <Link to={"/saved-movies"} className={"headerAuthorised__link "}>
+            <Link to={"/saved-movies"} className={"headerAuthorised__link"}>
               Сохранённые фильмы
             </Link>
-            <Link to={"/profile"}>
+            <Link to="/profile">
               <img
                 src={profileButton}
                 alt="Аккаунт"
@@ -37,10 +45,10 @@ function Navigation() {
           <button
             type="button"
             className="headerAuthorised__nav-mobile"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => setIsMenuOpen(true)}
           >
             <img
-              // src={iconMenu}
+              src={iconMenu}
               alt="Иконка меню"
               className="headerAuthorised__icon-menu"
             />

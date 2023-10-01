@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logoMain from '../../images/logo__header.svg'
 
 function Authorization({
   type,
@@ -20,7 +21,7 @@ function Authorization({
     <section className="login">
       <div className="login__header">
         <Link to="/">
-          <img alt="Логотип пользователя" className="login__logo" />
+          <img src={logoMain} alt="Логотип пользователя" className="login__logo" />
         </Link>
         <h1 className="welcome-title welcome-title_login">{title}</h1>
       </div>

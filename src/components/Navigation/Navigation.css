@@ -53,6 +53,10 @@
   background-color: #465DFF;
 }
 
+.headerAuthorised_blue .headerAuthorised__link {
+  color: #fff;
+}
+
 .headerAuthorised_white {
   background-color: #FFF;
 }

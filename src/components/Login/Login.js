@@ -9,7 +9,6 @@ function Login({ onLogin, isSubmitError, errorAuth }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(values)
     if (!values.email || !values.password) {
       return;
     }

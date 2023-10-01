@@ -11,7 +11,7 @@ class MainApi {
   }
 
   getSavedMovies = (token) => {
-    return fetch(this._url, {
+    return fetch(this._url + '/movies', {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`, // Добавляем заголовок авторизации
@@ -33,25 +33,33 @@ class MainApi {
     });
   };
 
-  sendUserIfno = (name, email) => {
+  sendUserIfno = (name, email, token) => {
     return fetch(this._url + "/users/me", {
       method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
       body: JSON.stringify(name, email),
     }).then((res) => {
       return this._checkingResponse(res);
     });
   };
 
-  deleteCard = (_id) => {
-    return fetch(this._url + _id, {
+  deleteCard = (_id, token) => {
+    return fetch(this._url + '/movies/' + _id, {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`, // Добавляем заголовок авторизации
+      },
     }).then((res) => {
       return this._checkingResponse(res);
     });
   };
 
   savedMovies = (movie, token) => {
-    return fetch(this._url, {
+    return fetch(this._url + '/movies', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

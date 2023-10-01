@@ -1,5 +1,7 @@
-// import profileButton from '../../images/profile.svg'
+import profileButton from '../../images/profile.svg'
 import { Link } from "react-router-dom";
+
+import './Sidebar.css'
 
 function Sidebar({ setIsMenuOpen }) {
   return (
@@ -23,7 +25,7 @@ function Sidebar({ setIsMenuOpen }) {
         </nav>
         <Link to={"/profile"}>
           <img
-            // src={profileButton}
+            src={profileButton}
             alt="Аккаунт"
             className="headerAuthorised__button sidebar__button"
           />

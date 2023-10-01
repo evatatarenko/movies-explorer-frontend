@@ -26,7 +26,7 @@ function App() {
   const [foundMovies, setFoundMovies] = useState(null);
   const [shortMovies, setShortMovies] = useState(null);
   const [savedMovies, setSavedMovies] = useState(null);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [search, setSearch] = useState("");
@@ -38,8 +38,6 @@ function App() {
 
   useEffect(() => {
     handleTokenCheck();
-    handleGetUserMovies();
-    handleGetSavedMovies();
   }, []);
 
   useEffect(() => {
@@ -54,12 +52,10 @@ function App() {
   }, [foundMovies, search, isChecked]);
 
   function handleLogin({ email, password }) {
-    console.log("handleRegister", email, password)
     setIsLoading(true);
     auth
       .authorize(email, password)
       .then((data) => {
-        console.log('logged in', data)
         if (data) {
           localStorage.setItem("jwt", data.token);
           setLoggedIn(true);
@@ -67,7 +63,6 @@ function App() {
         }
       })
       .catch((err) => {
-        console.log(err);
         if (err === "Ошибка: 401") {
           setErrorAuth("Вы ввели неправильный логин или пароль.");
         } else if (err === "Ошибка: 400") {
@@ -82,17 +77,13 @@ function App() {
   }
 
   function handleRegister({ name, email, password }) {
-    console.log("handleRegister", name, email, password)
     setIsLoading(true);
     auth
       .register(name, email, password)
       .then((res) => {
-        console.log(res,'registered')
-        // navigate("/sign-in", { replace: true });
         handleLogin({ email, password });
       })
       .catch((err) => {
-        console.log(err);
         if (err === "Ошибка: 409") {
           setErrorAuth("Пользователь с таким email уже существует.");
         } else if (err === "Ошибка: 400") {
@@ -111,16 +102,15 @@ function App() {
 
     if (token) {
       auth
-        .checkToken()
+        .checkToken(token)
         .then((res) => {
-          console.log(res,'res')
           setLoggedIn(true);
-          setCurrentUser(res);
         })
         .catch((err) => {
-          console.log(err);
-          // handleSignout();
+          handleSignout();
         });
+    } else {
+      handleSignout();
     }
   }, []);
 
@@ -135,15 +125,18 @@ function App() {
         .catch((err) => {
           console.log(err);
         });
+      handleGetMovies();
+      handleGetSavedMovies();
+      handleGetUserMovies();
     }
   }, [setCurrentUser, loggedIn]);
 
   function handleUpdateUser(name, email) {
     setIsLoading(true);
     mainApi
-      .sendUserIfno(name, email)
+      .sendUserIfno(name, email, localStorage.getItem("jwt"))
       .then((res) => {
-        setCurrentUser(res);
+        setCurrentUser(res.data);
         setIsLoading(false);
         setIsInfoPopupWinOpen(true);
       })
@@ -163,8 +156,6 @@ function App() {
   }
 
   function handleSearchMovies() {
-    if (!search.length) return;
-
     if (!allMovies.length) {
       setIsLoading(true);
       handleGetMovies();
@@ -180,7 +171,6 @@ function App() {
         setAllMovies(allMovies);
       }
     }
-
   }
 
   function handleGetMovies() {
@@ -257,11 +247,7 @@ function App() {
       mainApi
         .getSavedMovies(token)
         .then((res) => {
-          const addSavedMovie = res.filter(
-            (i) => i.owner === currentUser._id
-          );
-          console.log({addSavedMovie})
-          setSavedMovies(addSavedMovie);
+          setSavedMovies(res);
         })
         .catch((err) => {
           console.log(err);
@@ -284,8 +270,9 @@ function App() {
   }
 
   function handleDeleteMovie(id) {
+    const token = localStorage.getItem("jwt");
     mainApi
-      .deleteCard(id)
+      .deleteCard(id, token)
       .then(() => {
         const getSavedMovies = savedMovies.filter((c) => {
           return (c.id || c._id) !== id;
@@ -303,19 +290,11 @@ function App() {
   }
 
   function handleSignout() {
-    const token = localStorage.getItem("jwt");
     setLoggedIn(false);
     setCurrentUser({});
     localStorage.clear();
-    auth
-      .logout(token)
-      .then(() => {
-        navigate("/", { replace: true });
-        localStorage.clear();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    navigate("/", { replace: true });
+    localStorage.clear();
   }
 
   return (

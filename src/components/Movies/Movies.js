@@ -1,6 +1,7 @@
 import React from "react";
 import FilterCheckbox from "../Movies/SearchForm/FilterCheckbox/FilterCheckbox";
 import CardList from "../Movies/CardList/CardList";
+import { DURATION_SHORT_MOVIE } from "../../utils/constants";
 
 import "../Movies/Movies.css";
 
@@ -21,7 +22,12 @@ function Movies({
   savedMovies,
   firstSearch,
 }) {
-  const moviesList = savedMovies;
+  const moviesList = foundMovies?.filter((movie) => {
+    if (!isChecked) return movie;
+    return movie.duration <= DURATION_SHORT_MOVIE;
+  }) || [];
+
+  console.log({isChecked, foundMovies, moviesList})
 
   return (
     <main className="content content__movies">

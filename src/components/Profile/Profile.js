@@ -7,12 +7,13 @@ import "../Profile/Profile.css";
 
 function Profile({ onUpdateUser, errorAuth, handleSignout }) {
   const currentUser = React.useContext(CurrentUserContext);
-  const { values, errors, handleChange, isValid, setIsValid, resetForm } =
+  const { values, errors, handleChange, isValid, resetForm } =
     useFormWithValidation();
 
   const [isDisabled, setIsDisabled] = useState(false);
 
   React.useEffect(() => {
+    console.log({currentUser})
     if (currentUser) {
       resetForm(currentUser, {}, true);
     }
@@ -20,15 +21,8 @@ function Profile({ onUpdateUser, errorAuth, handleSignout }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (
-      values.name === currentUser.name &&
-      values.email === currentUser.email
-    ) {
-      setIsDisabled(true);
-      setIsValid(false);
-    } else {
-      onUpdateUser({ name: values.name, email: values.email });
-    }
+    console.log('submit')
+    onUpdateUser({ name: values.name, email: values.email });
   }
 
   function onEditDataUser(e) {
@@ -60,10 +54,7 @@ function Profile({ onUpdateUser, errorAuth, handleSignout }) {
             disabled={!isDisabled}
             required
           />
-          <span
-            className="login__error"
-            id="name-input-error"
-          >
+          <span className="login__error" id="name-input-error">
             {errors.name || ""}
           </span>
         </div>
@@ -81,10 +72,7 @@ function Profile({ onUpdateUser, errorAuth, handleSignout }) {
             placeholder="E-mail"
             required
           />
-          <span
-            className="login__error"
-            id="email-input-error"
-          >
+          <span className="login__error" id="email-input-error">
             {errors.email || ""}
           </span>
         </div>
@@ -100,7 +88,7 @@ function Profile({ onUpdateUser, errorAuth, handleSignout }) {
             disabled={!isValid}
             name="submit_btn"
             value="Сохранить"
-            onSubmit={handleSubmit}
+            onClick={handleSubmit}
           >
             Сохранить
             <span className="authorization__button-error authorization__button-error_active">

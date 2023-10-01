@@ -17,12 +17,10 @@ import {
 
 function CardList({
   moviesList,
-  isInfoPopupOpen,
   onMovieLike,
   onSavedMovie,
   onDeleteMovie,
   savedMovies,
-  firstSearch,
   cardProps,
 }) {
   const width = useWindowSize();
@@ -63,7 +61,7 @@ function CardList({
         {moviesToShow?.map((movie) => {
           return (
             <MoviesCard
-              key={movie.id}
+              key={movie.id || movie._id}
               movie={movie}
               onMovieLike={onMovieLike}
               onSavedMovie={onSavedMovie}
@@ -73,13 +71,8 @@ function CardList({
             />
           );
         })}
+        {!moviesToShow?.length && <p className="nothing-found">Ничего не найдено</p>}
       </div>
-      {!moviesToShow && moviesList !== null && (
-        <PopupWithMessage
-          isOpen={!isInfoPopupOpen}
-          message="Ничего не найдено."
-        />
-      )}
       {isShowMoreVisible && (
         <MoviesAddition handleAddMovies={handleAddMovies} />
       )}

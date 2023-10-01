@@ -15,7 +15,7 @@ function MoviesCard({
   const location = useLocation();
   const [isLikedMovie, setIsLikeMovie] = useState(false);
   const movieLikeButton = `moviesCard__saved ${
-    isLikedMovie && "element__button_active"
+    isLikedMovie && "moviesCard__heart-button-active"
   }`;
   const savedUserMovie = savedMovies?.find((i) => i.nameRU === movie.nameRU);
   const hours = Math.floor(movie.duration / HOUR);
@@ -38,7 +38,7 @@ function MoviesCard({
   }
 
   function handleDeleteMovie() {
-    onDeleteMovie(movie.id);
+    onDeleteMovie(movie._id);
     setIsLikeMovie(false);
   }
 
