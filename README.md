@@ -2,4 +2,3 @@
 
 Ссылка на пул реквест: https://github.com/evatatarenko/movies-explorer-frontend/pull/2
 Ссылка на проект: https://tatarenko-diploma.nomoredomainsrocks.ru
-
