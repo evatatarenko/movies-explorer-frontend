@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import "./CardList.css";
 import MoviesAddition from "../MoviesAddition/MoviesAddition";
-import PopupWithMessage from "../../PopupWithMessage/PopupWithMessage";
 import useWindowSize from "../../../hooks/useWindowSize";
 import {
   COMPUTER_DISPAY,
@@ -22,6 +21,7 @@ function CardList({
   onDeleteMovie,
   savedMovies,
   cardProps,
+  showMoreBtn = true,
 }) {
   const width = useWindowSize();
   const [count, setCount] = useState(4);
@@ -33,16 +33,16 @@ function CardList({
   function showCountMovies() {
     if (width >= COMPUTER_DISPAY) {
       setCount(COUNT_FOR_COMPUTER);
-      setAddNextMovies(ADD_COUNT_FOR_COMPUTER);
-    } else if (width <= COMPUTER_DISPAY && width > TABLET_DISPAY) {
+      setAddNextMovies(4);
+    } else if (width <= COMPUTER_DISPAY && width > 950) {
       setCount(COUNT_FOR_TABLET);
-      setAddNextMovies(ADD_COUNT_FOR_COMPUTER);
-    } else if (width <= TABLET_DISPAY && width > PHONE_DISPAY) {
-      setCount(COUNT_FOR_TABLET);
-      setAddNextMovies(ADD_COUNT_FOR_TABLET);
-    } else if (width <= PHONE_DISPAY) {
-      setCount(COUNT_FOR_PHONE);
-      setAddNextMovies(ADD_COUNT_FOR_TABLET);
+      setAddNextMovies(3);
+    } else if (width <= 950 && width > 750) {
+      setCount(8);
+      setAddNextMovies(2);
+    } else if (width <= TABLET_DISPAY) {
+      setCount(5);
+      setAddNextMovies(2);
     }
   }
 
@@ -71,9 +71,11 @@ function CardList({
             />
           );
         })}
-        {!moviesToShow?.length && <p className="nothing-found">Ничего не найдено</p>}
+        {!moviesToShow?.length && (
+          <p className="nothing-found">Ничего не найдено</p>
+        )}
       </div>
-      {isShowMoreVisible && (
+      {isShowMoreVisible && showMoreBtn && (
         <MoviesAddition handleAddMovies={handleAddMovies} />
       )}
     </section>

@@ -82,6 +82,10 @@
   cursor: pointer;
 }
 
+.login__button:disabled {
+  background: #c8c8c8;
+}
+
 .login__link-container {
   display: flex;
   flex-direction: row;

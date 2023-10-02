@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import "../Navigation/Navigation.css";
 import logoHeader from "../../images/logo__header.svg";
@@ -20,27 +20,41 @@ function Navigation() {
         }`}
       >
         <div className="headerAuthorised__container">
-          <Link to={"/"}>
+          <NavLink to={"/"}>
             <img
               src={logoHeader}
               alt="Логотип"
               className="headerAuthorised__logo"
             />
-          </Link>
+          </NavLink>
           <nav className="headerAuthorised__container-middle">
-            <Link to={"/movies"} className={"headerAuthorised__link"}>
+            <NavLink
+              to={"/movies"}
+              className={({ isActive }) =>
+                `headerAuthorised__link ${
+                  isActive && "headerAuthorised__link-active"
+                }`
+              }
+            >
               {"Фильмы"}
-            </Link>
-            <Link to={"/saved-movies"} className={"headerAuthorised__link"}>
+            </NavLink>
+            <NavLink
+              to={"/saved-movies"}
+              className={({ isActive }) =>
+                `headerAuthorised__link ${
+                  isActive && "headerAuthorised__link-active"
+                }`
+              }
+            >
               Сохранённые фильмы
-            </Link>
-            <Link to="/profile">
+            </NavLink>
+            <NavLink to="/profile">
               <img
                 src={profileButton}
                 alt="Аккаунт"
                 className="headerAuthorised__button"
               />
-            </Link>
+            </NavLink>
           </nav>
           <button
             type="button"

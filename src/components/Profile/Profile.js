@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useFormWithValidation } from "../../hooks/useForm";
 
@@ -11,9 +10,11 @@ function Profile({ onUpdateUser, errorAuth, handleSignout }) {
     useFormWithValidation();
 
   const [isDisabled, setIsDisabled] = useState(false);
+  const isChanged =
+    values.name !== currentUser.name || values.email !== currentUser.email;
 
   React.useEffect(() => {
-    console.log({currentUser})
+    console.log({ currentUser });
     if (currentUser) {
       resetForm(currentUser, {}, true);
     }
@@ -21,7 +22,7 @@ function Profile({ onUpdateUser, errorAuth, handleSignout }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log('submit')
+    console.log("submit");
     onUpdateUser({ name: values.name, email: values.email });
   }
 
@@ -77,34 +78,29 @@ function Profile({ onUpdateUser, errorAuth, handleSignout }) {
           </span>
         </div>
       </form>
+      <span className="authorization__button-error authorization__button-error_active">
+        {errorAuth}
+      </span>
       <div className="profile__button-container">
         <button className="common-link" onClick={onEditDataUser}>
           Редактировать
         </button>
-        {isDisabled ? (
+        {isDisabled && (
           <button
             type="submit"
             className="common-link common-link_red"
-            disabled={!isValid}
+            // Кнопка блочится если поля не валидны
+            disabled={!isValid || !isChanged}
             name="submit_btn"
             value="Сохранить"
             onClick={handleSubmit}
           >
             Сохранить
-            <span className="authorization__button-error authorization__button-error_active">
-              {errorAuth}
-            </span>
           </button>
-        ) : (
-          ""
         )}
-        <Link
-          to="/sign-in"
-          className="common-link common-link_red"
-          onClick={handleSignout}
-        >
+        <button className="common-link common-link_red" onClick={handleSignout}>
           Выйти из аккаунта
-        </Link>
+        </button>
       </div>
     </section>
   );

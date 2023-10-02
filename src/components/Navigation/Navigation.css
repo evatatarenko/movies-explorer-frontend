@@ -57,6 +57,10 @@
   color: #fff;
 }
 
+.headerAuthorised__link-active {
+  font-weight: 500;
+}
+
 .headerAuthorised_white {
   background-color: #FFF;
 }

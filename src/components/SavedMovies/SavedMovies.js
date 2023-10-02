@@ -77,6 +77,7 @@ function SavedMovies({
           isShowLikeBtn: false,
           isShowDeleteBtn: true,
         }}
+        showMoreBtn={false}
       />
       {!moviesSavedList && searchSavedMovie && (
         <PopupWithMessage

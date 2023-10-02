@@ -40,16 +40,21 @@ function App() {
     handleTokenCheck();
   }, []);
 
-  useEffect(() => {
-    const saveToList = () => {
-      localStorage.setItem("movies", JSON.stringify(foundMovies));
-      localStorage.setItem("search", JSON.stringify(search));
-      localStorage.setItem("isChecked", JSON.stringify(isChecked));
-    };
+  const saveData = useCallback(() => {
+    localStorage.setItem("movies", JSON.stringify(foundMovies));
+    localStorage.setItem("search", JSON.stringify(search));
+    localStorage.setItem("isChecked", JSON.stringify(isChecked));
 
     search === "" ? setFirstSearch(false) : setFirstSearch(true);
-    window.addEventListener("beforeunload", saveToList);
   }, [foundMovies, search, isChecked]);
+
+  useEffect(() => {
+    window.addEventListener("beforeunload", saveData);
+
+    // Здесь не нужно очищать listener, так как beforeunload вызывается перед закрытием страницы
+    // Если мы попробуем очистить будет баг
+    // return window.removeEventListener("beforeunload", saveData);
+  }, [saveData]);
 
   function handleLogin({ email, password }) {
     setIsLoading(true);
@@ -174,6 +179,7 @@ function App() {
   }
 
   function handleGetMovies() {
+    setIsLoading(true);
     api
       .getAllMovies()
       .then((res) => {
@@ -293,8 +299,7 @@ function App() {
     setLoggedIn(false);
     setCurrentUser({});
     localStorage.clear();
-    navigate("/", { replace: true });
-    localStorage.clear();
+    navigate("/");
   }
 
   return (
@@ -310,6 +315,7 @@ function App() {
                 onRegister={handleRegister}
                 isLoggedIn={loggedIn}
                 errorAuth={errorAuth}
+                isLoading={isLoading}
               />
             }
           />
@@ -320,6 +326,7 @@ function App() {
                 onLogin={handleLogin}
                 isLoggedIn={loggedIn}
                 errorAuth={errorAuth}
+                isLoading={isLoading}
               />
             }
           />

@@ -4,7 +4,7 @@ import { useFormWithValidation } from "../../hooks/useForm";
 
 import "../Register/Register.css";
 
-function Register({ onRegister, isSubmitError, errorAuth }) {
+function Register({ onRegister, isSubmitError, errorAuth, isLoading }) {
   const { values, errors, handleChange, isValid } = useFormWithValidation();
 
   function handleSubmit(e) {
@@ -22,7 +22,7 @@ function Register({ onRegister, isSubmitError, errorAuth }) {
       path="/sign-in"
       textLink="Войти"
       handleSubmit={handleSubmit}
-      isDisabled={!isValid}
+      isDisabled={!isValid || isLoading}
       isSubmitError={isSubmitError}
       errorAuth={errorAuth}
     >
@@ -36,6 +36,7 @@ function Register({ onRegister, isSubmitError, errorAuth }) {
           name="name"
           type="text"
           onChange={handleChange}
+          disabled={isLoading}
           value={values.name || ""}
           minLength="2"
           maxLength="30"
@@ -65,6 +66,7 @@ function Register({ onRegister, isSubmitError, errorAuth }) {
           onChange={handleChange}
           placeholder="E-mail"
           required
+          disabled={isLoading}
         />
         <span
           className="login__error"
@@ -86,6 +88,7 @@ function Register({ onRegister, isSubmitError, errorAuth }) {
           value={values.password || ""}
           placeholder="Пароль"
           required
+          disabled={isLoading}
         />
         <span
           className="login__error"

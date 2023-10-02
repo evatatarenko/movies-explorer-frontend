@@ -85,6 +85,11 @@
     cursor: pointer;
 }
 
+.common-link:disabled {
+    pointer-events: none;
+    color: #000;
+}
+
 .common-link_red {
     color: #EE3465;
     font-size: 13px;

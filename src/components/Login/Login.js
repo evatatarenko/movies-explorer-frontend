@@ -4,7 +4,7 @@ import { useFormWithValidation } from "../../hooks/useForm";
 
 import "../Login/Login.css";
 
-function Login({ onLogin, isSubmitError, errorAuth }) {
+function Login({ onLogin, isSubmitError, errorAuth, isLoading }) {
   const { values, errors, handleChange, isValid } = useFormWithValidation();
 
   function handleSubmit(e) {
@@ -25,7 +25,7 @@ function Login({ onLogin, isSubmitError, errorAuth }) {
       path="/sign-up"
       textLink="Регистрация"
       handleSubmit={handleSubmit}
-      isDisabled={!isValid}
+      isDisabled={!isValid || isLoading}
       isSubmitError={isSubmitError}
       errorAuth={errorAuth}
     >
@@ -41,6 +41,7 @@ function Login({ onLogin, isSubmitError, errorAuth }) {
           onChange={handleChange}
           placeholder="E-mail"
           required
+          disabled={isLoading}
         />
         <span
           className="login__error"
@@ -60,6 +61,7 @@ function Login({ onLogin, isSubmitError, errorAuth }) {
           value={values.password || ""}
           placeholder="Пароль"
           required
+          disabled={isLoading}
         />
         <span
           className="login__error"

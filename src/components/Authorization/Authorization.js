@@ -1,27 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import logoMain from '../../images/logo__header.svg'
+import { Link, Navigate } from "react-router-dom";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import logoMain from "../../images/logo__header.svg";
 
 function Authorization({
-  type,
   title,
   children,
   textButton,
   text,
-  pathEdit,
   path,
-  linkEdit,
   textLink,
-  onClick,
   handleSubmit,
   isDisabled = false,
   errorAuth,
 }) {
+  const currentUser = React.useContext(CurrentUserContext);
+  const isRedirect = !!Object.keys(currentUser).length;
+  if (isRedirect) return <Navigate to="/" />;
+
   return (
     <section className="login">
       <div className="login__header">
         <Link to="/">
-          <img src={logoMain} alt="Логотип пользователя" className="login__logo" />
+          <img
+            src={logoMain}
+            alt="Логотип пользователя"
+            className="login__logo"
+          />
         </Link>
         <h1 className="welcome-title welcome-title_login">{title}</h1>
       </div>

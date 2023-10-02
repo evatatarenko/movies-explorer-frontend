@@ -25,7 +25,7 @@ function MoviesCard({
     if (savedUserMovie) {
       setIsLikeMovie(true);
     }
-  }, [location]);
+  }, [savedUserMovie]);
 
   function handleLikeMovie() {
     onSavedMovie(movie);
