@@ -10,6 +10,7 @@ function MoviesCard({
   isShowLikeBtn = true,
   isShowDeleteBtn = false,
   savedMovies,
+  handleGetSavedMovies
 }) {
   const [isLikedMovie, setIsLikeMovie] = useState(false);
   const movieLikeButton = `moviesCard__saved ${
@@ -29,6 +30,7 @@ function MoviesCard({
     onSavedMovie(movie)
       .then(() => {
         setIsLikeMovie(!isLikedMovie);
+        handleGetSavedMovies();
       })
       .catch((err) => {
         console.log(err);
@@ -39,6 +41,7 @@ function MoviesCard({
     onDeleteMovie(savedUserMovie._id)
       .then(() => {
         setIsLikeMovie(false);
+        handleGetSavedMovies();
       })
       .catch((err) => {
         console.log(err);

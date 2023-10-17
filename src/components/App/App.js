@@ -243,7 +243,7 @@ function App() {
     });
   }
 
-  function handleDeleteMovie(id) {
+  async function handleDeleteMovie(id) {
     const token = localStorage.getItem("jwt");
     return mainApi.deleteCard(id, token).then(() => {
       const getSavedMovies = savedMovies.filter((c) => {

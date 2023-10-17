@@ -21,6 +21,7 @@ function CardList({
   onDeleteMovie,
   savedMovies,
   cardProps,
+  handleGetSavedMovies,
   showMoreBtn = true,
 }) {
   const width = useWindowSize();
@@ -63,6 +64,7 @@ function CardList({
             <MoviesCard
               key={movie.id || movie._id}
               movie={movie}
+              handleGetSavedMovies={handleGetSavedMovies}
               onMovieLike={onMovieLike}
               onSavedMovie={onSavedMovie}
               onDeleteMovie={onDeleteMovie}

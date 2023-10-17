@@ -63,6 +63,7 @@ function Movies({
         onSavedMovie={onSavedMovie}
         onDeleteMovie={onDeleteMovie}
         savedMovies={savedMovies}
+        handleGetSavedMovies={handleGetSavedMovies}
         firstSearch={firstSearch}
       />
     </main>
