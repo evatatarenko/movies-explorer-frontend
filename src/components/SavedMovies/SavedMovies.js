@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import FilterCheckbox from "../Movies/SearchForm/FilterCheckbox/FilterCheckbox";
 import CardList from "../Movies/CardList/CardList";
 import { DURATION_SHORT_MOVIE } from "../../utils/constants";
-import PopupWithMessage from "../PopupWithMessage/PopupWithMessage";
 
 import "../SavedMovies/SavedMovies.css";
+
+const filterMovieList = (list, value) =>
+  list.filter((movie) =>
+    movie.nameRU.toLowerCase().includes(value.toLowerCase())
+  );
+
+const getShortMovies = (list) =>
+  list.filter((movie) => movie.duration <= DURATION_SHORT_MOVIE);
 
 function SavedMovies({
   isChecked,
@@ -14,47 +21,16 @@ function SavedMovies({
   onDeleteMovie,
   savedMovies,
   handleGetSavedMovies,
-  setSavedMovies,
 }) {
   const [isCheckedQuery, setIsCheckedQuery] = useState(false);
   const [searchSavedMovie, setSearchSavedMovie] = useState("");
-  const [foundMovies, setFoundMovies] = useState(null);
-  const [shortMovies, setShortMovies] = useState(null);
 
-  React.useEffect(() => {
-    if (!isCheckedQuery) {
-      handleGetSavedMovies();
-    } else {
-      handleSearchShortSavedMovies();
-    }
-  }, [isCheckedQuery]);
+  const isSearchEmpty = !searchSavedMovie;
 
-  function handleSearchSavedMovies() {
-    const filteredSavedMovies = savedMovies.filter((movie) => {
-      return movie.nameRU
-        .toLowerCase()
-        .includes(searchSavedMovie.toLowerCase());
-    });
-    if (filteredSavedMovies.length) {
-      setFoundMovies(filteredSavedMovies);
-    } else {
-      setFoundMovies(null);
-    }
-  }
-
-  function handleSearchShortSavedMovies() {
-    const filteredShortSavedMovies = savedMovies.filter((movie) => {
-      return movie.duration <= DURATION_SHORT_MOVIE;
-    });
-    if (filteredShortSavedMovies.length) {
-      setShortMovies(filteredShortSavedMovies);
-      setSavedMovies(filteredShortSavedMovies);
-    } else {
-      setShortMovies(null);
-    }
-  }
-
-  const moviesSavedList = !isCheckedQuery ? foundMovies : shortMovies;
+  const moviesList = isSearchEmpty ? [] : savedMovies;
+  const filteredMoviesList = isCheckedQuery
+    ? filterMovieList(getShortMovies(moviesList), searchSavedMovie)
+    : filterMovieList(moviesList, searchSavedMovie);
 
   return (
     <main className="content content__savedMovies">
@@ -63,11 +39,11 @@ function SavedMovies({
         setIsChecked={setIsCheckedQuery}
         search={searchSavedMovie}
         setSearch={setSearchSavedMovie}
-        handleShortMovies={handleSearchShortSavedMovies}
-        handleSearchMovies={handleSearchSavedMovies}
+        handleGetSavedMovies={handleGetSavedMovies}
+        savedMovies={savedMovies}
       ></FilterCheckbox>
       <CardList
-        moviesList={!searchSavedMovie ? savedMovies : moviesSavedList}
+        moviesList={filteredMoviesList}
         onMovieLike={onMovieLike}
         isChecked={isChecked}
         isInfoPopupOpen={isInfoPopupOpen}
@@ -79,12 +55,6 @@ function SavedMovies({
         }}
         showMoreBtn={false}
       />
-      {!moviesSavedList && searchSavedMovie && (
-        <PopupWithMessage
-          isOpen={!isInfoPopupOpen}
-          message="Ничего не найдено."
-        />
-      )}
     </main>
   );
 }

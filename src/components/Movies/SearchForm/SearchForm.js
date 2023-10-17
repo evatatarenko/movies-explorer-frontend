@@ -2,18 +2,38 @@ import React from "react";
 
 import "../SearchForm/SearchForm.css";
 
-function SearchForm({ search, setSearch, children, handleSearchMovies }) {
+function SearchForm({
+  search,
+  setSearch,
+  children,
+  handleGetSavedMovies,
+  handleGetMovies,
+  savedMovies,
+}) {
   const [errors, setErrors] = React.useState({});
+  const [val, setVal] = React.useState("");
 
-  const handleFormSubmit = (evt) => {
+  React.useEffect(() => {
+    if (search) {
+      setVal(search);
+    }
+  }, [search]);
+
+  const handleFormSubmit = async (evt) => {
     evt.preventDefault();
-    handleSearchMovies(search);
+    if (!savedMovies?.length) {
+      await handleGetSavedMovies();
+      if (handleGetMovies) await handleGetMovies();
+      setSearch(val);
+    } else {
+      setSearch(val);
+    }
   };
 
   const handleInputChange = (evt) => {
     const target = evt.target;
     const name = target.name;
-    setSearch(evt.target.value);
+    setVal(evt.target.value);
     setErrors({ ...errors, [name]: target.validationMessage });
   };
 
@@ -27,7 +47,7 @@ function SearchForm({ search, setSearch, children, handleSearchMovies }) {
             type="text"
             name="search"
             minLength="1"
-            value={search || ""}
+            value={val || ""}
             onChange={handleInputChange}
             placeholder="Фильм"
             required

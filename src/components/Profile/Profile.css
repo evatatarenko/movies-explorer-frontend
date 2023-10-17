@@ -118,6 +118,14 @@
     }
 }
 
+.submit_btn {
+    color: #EE3465;
+}
+
+.submit_btn:disabled {
+    color: inherit
+}
+
 @media screen and (max-width: 460px) {
     .profile {
         margin: 70px 0 40px 0;

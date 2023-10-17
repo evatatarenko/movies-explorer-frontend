@@ -4,7 +4,13 @@ import { useFormWithValidation } from "../../hooks/useForm";
 
 import "../Register/Register.css";
 
-function Register({ onRegister, isSubmitError, errorAuth, isLoading }) {
+function Register({
+  onRegister,
+  isSubmitError,
+  errorAuth,
+  setErrorAuth,
+  isLoading,
+}) {
   const { values, errors, handleChange, isValid } = useFormWithValidation();
 
   function handleSubmit(e) {
@@ -25,11 +31,10 @@ function Register({ onRegister, isSubmitError, errorAuth, isLoading }) {
       isDisabled={!isValid || isLoading}
       isSubmitError={isSubmitError}
       errorAuth={errorAuth}
+      setErrorAuth={setErrorAuth}
     >
       <div className="login__form-input">
-        <label className="login__label-text">
-          Имя
-        </label>
+        <label className="login__label-text">Имя</label>
         <input
           className="login__input-text"
           id="name-input"
@@ -44,18 +49,13 @@ function Register({ onRegister, isSubmitError, errorAuth, isLoading }) {
           placeholder="Имя"
           required
         />
-        <span
-          className="login__error"
-          id="name-input-error"
-        >
+        <span className="login__error" id="name-input-error">
           {errors.name || ""}
         </span>
       </div>
 
       <div className="login__form-input">
-        <label className="login__label-text">
-          E-mail
-        </label>
+        <label className="login__label-text">E-mail</label>
         <input
           className="login__input-text"
           id="email-input"
@@ -68,17 +68,12 @@ function Register({ onRegister, isSubmitError, errorAuth, isLoading }) {
           required
           disabled={isLoading}
         />
-        <span
-          className="login__error"
-          id="email-input-error"
-        >
+        <span className="login__error" id="email-input-error">
           {errors.email || ""}
         </span>
       </div>
       <div className="login__form-input">
-        <label className="login__label-text">
-          Пароль
-        </label>
+        <label className="login__label-text">Пароль</label>
         <input
           className="login__input-text"
           id="password-input"
@@ -90,10 +85,7 @@ function Register({ onRegister, isSubmitError, errorAuth, isLoading }) {
           required
           disabled={isLoading}
         />
-        <span
-          className="login__error"
-          id="password-input-error"
-        >
+        <span className="login__error" id="password-input-error">
           {errors.password || ""}
         </span>
       </div>

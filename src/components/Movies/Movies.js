@@ -1,33 +1,45 @@
-import React from "react";
 import FilterCheckbox from "../Movies/SearchForm/FilterCheckbox/FilterCheckbox";
 import CardList from "../Movies/CardList/CardList";
 import { DURATION_SHORT_MOVIE } from "../../utils/constants";
 
 import "../Movies/Movies.css";
 
+const getShortMovies = (movies) => {
+  return movies?.filter((movie) => {
+    return movie.duration <= DURATION_SHORT_MOVIE;
+  });
+};
+
+const filterMovies = (movies, val) =>
+  movies?.filter((movie) => {
+    return movie.nameRU.toLowerCase().includes(val.toLowerCase());
+  });
+
 function Movies({
-  foundMovies,
+  allMovies,
   isChecked,
   setIsChecked,
   search,
   setSearch,
+  handleGetSavedMovies,
   handleSearchMovies,
   handleShortMovies,
   isLoading,
   isInfoPopupOpen,
-  shortMovies,
   onMovieLike,
   onSavedMovie,
   onDeleteMovie,
   savedMovies,
   firstSearch,
+  handleGetMovies,
 }) {
-  const moviesList = foundMovies?.filter((movie) => {
-    if (!isChecked) return movie;
-    return movie.duration <= DURATION_SHORT_MOVIE;
-  }) || [];
-
-  console.log({isChecked, foundMovies, moviesList})
+  const isSearchEmtpy = !search;
+  const moviesList = allMovies
+    ? isChecked
+      ? filterMovies(getShortMovies(allMovies), search)
+      : filterMovies(allMovies, search)
+    : null;
+  const movies = isSearchEmtpy ? [] : moviesList;
 
   return (
     <main className="content content__movies">
@@ -38,9 +50,12 @@ function Movies({
         search={search}
         setSearch={setSearch}
         handleShortMovies={handleShortMovies}
+        handleGetSavedMovies={handleGetSavedMovies}
+        handleGetMovies={handleGetMovies}
+        savedMovies={savedMovies}
       ></FilterCheckbox>
       <CardList
-        moviesList={moviesList}
+        moviesList={movies}
         onMovieLike={onMovieLike}
         isLoading={isLoading}
         isChecked={isChecked}

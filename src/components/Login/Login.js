@@ -4,7 +4,7 @@ import { useFormWithValidation } from "../../hooks/useForm";
 
 import "../Login/Login.css";
 
-function Login({ onLogin, isSubmitError, errorAuth, isLoading }) {
+function Login({ onLogin, isSubmitError, errorAuth, setErrorAuth, isLoading }) {
   const { values, errors, handleChange, isValid } = useFormWithValidation();
 
   function handleSubmit(e) {
@@ -28,6 +28,7 @@ function Login({ onLogin, isSubmitError, errorAuth, isLoading }) {
       isDisabled={!isValid || isLoading}
       isSubmitError={isSubmitError}
       errorAuth={errorAuth}
+      setErrorAuth={setErrorAuth}
     >
       <div className="login__form-input">
         <label className="login__label-text">E-mail</label>
@@ -43,10 +44,7 @@ function Login({ onLogin, isSubmitError, errorAuth, isLoading }) {
           required
           disabled={isLoading}
         />
-        <span
-          className="login__error"
-          id="email-input-error"
-        >
+        <span className="login__error" id="email-input-error">
           {errors.email || ""}
         </span>
       </div>
@@ -63,10 +61,7 @@ function Login({ onLogin, isSubmitError, errorAuth, isLoading }) {
           required
           disabled={isLoading}
         />
-        <span
-          className="login__error"
-          id="password-input-error"
-        >
+        <span className="login__error" id="password-input-error">
           {errors.password || ""}
         </span>
       </div>

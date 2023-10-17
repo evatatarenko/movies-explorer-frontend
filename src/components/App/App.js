@@ -40,6 +40,10 @@ function App() {
     handleTokenCheck();
   }, []);
 
+  useEffect(() => {
+    if (loggedIn) handleGetUserMovies();
+  }, [loggedIn]);
+
   const saveData = useCallback(() => {
     localStorage.setItem("movies", JSON.stringify(foundMovies));
     localStorage.setItem("search", JSON.stringify(search));
@@ -130,9 +134,6 @@ function App() {
         .catch((err) => {
           console.log(err);
         });
-      handleGetMovies();
-      handleGetSavedMovies();
-      handleGetUserMovies();
     }
   }, [setCurrentUser, loggedIn]);
 
@@ -160,27 +161,9 @@ function App() {
       });
   }
 
-  function handleSearchMovies() {
-    if (!allMovies.length) {
-      setIsLoading(true);
-      handleGetMovies();
-    } else {
-      const foundUserMovies = allMovies.filter((movie) => {
-        return movie.nameRU.toLowerCase().includes(search.toLowerCase());
-      });
-
-      if (foundUserMovies.length) {
-        setFoundMovies(foundUserMovies);
-      } else {
-        setFoundMovies(null);
-        setAllMovies(allMovies);
-      }
-    }
-  }
-
   function handleGetMovies() {
     setIsLoading(true);
-    api
+    return api
       .getAllMovies()
       .then((res) => {
         setAllMovies(res);
@@ -204,11 +187,6 @@ function App() {
   }
 
   function handleGetUserMovies() {
-    const moviesJSON = localStorage.getItem("movies");
-    if (moviesJSON) {
-      const foundUserMovies = JSON.parse(moviesJSON);
-      setFoundMovies(foundUserMovies);
-    }
     const searchUserMovies = localStorage.getItem("search");
     if (searchUserMovies) {
       const searchMovies = JSON.parse(searchUserMovies);
@@ -250,45 +228,29 @@ function App() {
   function handleGetSavedMovies() {
     if (loggedIn) {
       const token = localStorage.getItem("jwt");
-      mainApi
-        .getSavedMovies(token)
-        .then((res) => {
-          setSavedMovies(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      return mainApi.getSavedMovies(token).then((res) => {
+        setSavedMovies(res);
+        return res;
+      });
     }
   }
 
   function handleSaveMovie(movie) {
     const token = localStorage.getItem("jwt");
-    mainApi
-      .savedMovies(movie, token)
-      .then(() => {
-        const getSavedMovies = [...savedMovies];
-        setSavedMovies(getSavedMovies);
-        handleGetSavedMovies();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    return mainApi.savedMovies(movie, token).then(() => {
+      const getSavedMovies = [...savedMovies];
+      setSavedMovies(getSavedMovies);
+    });
   }
 
   function handleDeleteMovie(id) {
     const token = localStorage.getItem("jwt");
-    mainApi
-      .deleteCard(id, token)
-      .then(() => {
-        const getSavedMovies = savedMovies.filter((c) => {
-          return (c.id || c._id) !== id;
-        });
-        setSavedMovies(getSavedMovies);
-        handleGetSavedMovies();
-      })
-      .catch((err) => {
-        console.log(err);
+    return mainApi.deleteCard(id, token).then(() => {
+      const getSavedMovies = savedMovies.filter((c) => {
+        return (c.id || c._id) !== id;
       });
+      setSavedMovies(getSavedMovies);
+    });
   }
 
   function closePopup() {
@@ -315,6 +277,7 @@ function App() {
                 onRegister={handleRegister}
                 isLoggedIn={loggedIn}
                 errorAuth={errorAuth}
+                setErrorAuth={setErrorAuth}
                 isLoading={isLoading}
               />
             }
@@ -326,6 +289,7 @@ function App() {
                 onLogin={handleLogin}
                 isLoggedIn={loggedIn}
                 errorAuth={errorAuth}
+                setErrorAuth={setErrorAuth}
                 isLoading={isLoading}
               />
             }
@@ -350,14 +314,15 @@ function App() {
                 element={Movies}
                 loggedIn={loggedIn}
                 shortMovies={shortMovies}
-                foundMovies={foundMovies}
+                allMovies={allMovies}
+                handleGetMovies={handleGetMovies}
+                handleGetSavedMovies={handleGetSavedMovies}
                 search={search}
                 setSearch={setSearch}
                 isChecked={isChecked}
                 savedMovies={savedMovies}
                 setIsChecked={setIsChecked}
                 isLoading={isLoading}
-                handleSearchMovies={handleSearchMovies}
                 isInfoPopupOpen={isInfoPopupOpen}
                 handleShortMovies={handleCetShortMovies}
                 onSavedMovie={handleSaveMovie}

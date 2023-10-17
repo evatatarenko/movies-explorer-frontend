@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { MOVIE_IMAGE_PATH, HOUR } from "../../../utils/constants";
 
 import "../MoviesCard/MoviesCard.css";
@@ -12,7 +11,6 @@ function MoviesCard({
   isShowDeleteBtn = false,
   savedMovies,
 }) {
-  const location = useLocation();
   const [isLikedMovie, setIsLikeMovie] = useState(false);
   const movieLikeButton = `moviesCard__saved ${
     isLikedMovie && "moviesCard__heart-button-active"
@@ -28,18 +26,33 @@ function MoviesCard({
   }, [savedUserMovie]);
 
   function handleLikeMovie() {
-    onSavedMovie(movie);
-    setIsLikeMovie(!isLikedMovie);
+    onSavedMovie(movie)
+      .then(() => {
+        setIsLikeMovie(!isLikedMovie);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function handleRemoveLike() {
-    onDeleteMovie(savedUserMovie._id);
-    setIsLikeMovie(false);
+    onDeleteMovie(savedUserMovie._id)
+      .then(() => {
+        setIsLikeMovie(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function handleDeleteMovie() {
-    onDeleteMovie(movie._id);
-    setIsLikeMovie(false);
+    onDeleteMovie(movie._id)
+      .then(() => {
+        setIsLikeMovie(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (

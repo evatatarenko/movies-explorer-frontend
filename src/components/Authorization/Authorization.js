@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import logoMain from "../../images/logo__header.svg";
@@ -13,9 +13,15 @@ function Authorization({
   handleSubmit,
   isDisabled = false,
   errorAuth,
+  setErrorAuth,
 }) {
   const currentUser = React.useContext(CurrentUserContext);
   const isRedirect = !!Object.keys(currentUser).length;
+
+  useEffect(() => {
+    return () => setErrorAuth("");
+  }, []);
+
   if (isRedirect) return <Navigate to="/" />;
 
   return (
@@ -32,6 +38,7 @@ function Authorization({
       </div>
       <form className="login__form" onSubmit={handleSubmit}>
         {children}
+        <span className="common-link_orange">{errorAuth}</span>
         <button
           type="submit"
           className="login__button login__button-login"
@@ -41,9 +48,6 @@ function Authorization({
           value={textButton}
         >
           {textButton}
-          <span className="authorization__button-error authorization__button-error_active">
-            {errorAuth}
-          </span>
         </button>
       </form>
       <div className="login__link-container">

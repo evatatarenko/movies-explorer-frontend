@@ -8,20 +8,22 @@ function FilterCheckbox({
   setIsChecked,
   search,
   setSearch,
-  handleSearchMovies,
-  handleShortMovies,
+  handleGetSavedMovies,
+  handleGetMovies,
+  savedMovies
 }) {
   function handleChangeCheckbox() {
     setIsChecked(!isChecked);
-    handleShortMovies();
   }
 
   return (
     <SearchForm
-      handleSearchMovies={handleSearchMovies}
       search={search}
       setSearch={setSearch}
+      handleGetSavedMovies={handleGetSavedMovies}
+      handleGetMovies={handleGetMovies}
       isChecked={isChecked}
+      savedMovies={savedMovies}
     >
       <div className="filterCheckbox">
         <input
