@@ -1,0 +1,22 @@
+.authorization__field_login-name {
+  display: none;
+}
+
+.authorization__input_login-name {
+  display: none;
+}
+
+.authorization__link_login-edit {
+  display: none;
+}
+
+
+@media screen and (max-width: 715px) {
+  .authorization__input_login-password {
+    margin-bottom: 0;
+  }
+
+  .authorization__button_login {
+    margin: 267px 0 14px;
+  }
+}
