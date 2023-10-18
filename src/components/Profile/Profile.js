@@ -9,9 +9,9 @@ function Profile({ onUpdateUser, errorAuth, handleSignout }) {
   const { values, errors, handleChange, isValid, resetForm } =
     useFormWithValidation();
 
-  const [isDisabled, setIsDisabled] = useState(false);
-  const isChanged =
-    values.name !== currentUser.name || values.email !== currentUser.email;
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [isChanged, setIsChanged] =useState(values.name !== currentUser.name || values.email !== currentUser.email);
+    // values.name !== currentUser.name || values.email !== currentUser.email;
 
   React.useEffect(() => {
     console.log({ currentUser });
@@ -31,6 +31,12 @@ function Profile({ onUpdateUser, errorAuth, handleSignout }) {
     setIsDisabled(!isDisabled);
   }
 
+  function handleLocalChange (e) {
+    handleChange(e);
+    setIsChanged(values.name !== currentUser.name || values.email !== currentUser.email);
+    isChanged ? setIsDisabled(false) : setIsDisabled(true)
+  }
+
   return (
     <section className="profile">
       <h2 className="welcome-title">Привет, {currentUser.name}!</h2>
@@ -46,13 +52,13 @@ function Profile({ onUpdateUser, errorAuth, handleSignout }) {
             id="name-input"
             name="name"
             type="text"
-            onChange={handleChange}
+            onChange={handleLocalChange}
             value={values.name || ""}
             minLength="2"
             maxLength="30"
             pattern="[A-Za-zА-Яа-яЁё\- ]{1,}"
             placeholder="Имя"
-            disabled={!isDisabled}
+            // disabled={!isDisabled}
             required
           />
           <span className="login__error" id="name-input-error">
@@ -68,8 +74,8 @@ function Profile({ onUpdateUser, errorAuth, handleSignout }) {
             type="email"
             pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$"
             value={values.email || ""}
-            onChange={handleChange}
-            disabled={!isDisabled}
+            onChange={handleLocalChange}
+            // disabled={!isDisabled}
             placeholder="E-mail"
             required
           />
@@ -82,10 +88,10 @@ function Profile({ onUpdateUser, errorAuth, handleSignout }) {
         {errorAuth}
       </span>
       <div className="profile__button-container">
-        <button className="common-link" onClick={onEditDataUser}>
+        <button className="common-link" type="submit" onClick={handleSubmit} disabled={!isValid || isDisabled}>
           Редактировать
         </button>
-        {isDisabled && (
+        {/* {isDisabled && (
           <button
             type="submit"
             className="common-link common-link_red"
@@ -97,7 +103,7 @@ function Profile({ onUpdateUser, errorAuth, handleSignout }) {
           >
             Сохранить
           </button>
-        )}
+        )} */}
         <button className="common-link common-link_red" onClick={handleSignout}>
           Выйти из аккаунта
         </button>
